@@ -1,3 +1,9 @@
+# News portal
+
+A hacker news clone useing remix for other kind of news
+
+------ Below auto readme by indie stack template -------
+
 # Remix Indie Stack
 
 ![The Remix Indie Stack](https://repository-images.githubusercontent.com/465928257/a241fa49-bd4d-485a-a2a5-5cb8e4ee0abf)
