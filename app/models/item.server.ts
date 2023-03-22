@@ -5,6 +5,13 @@ type Props = Pick<Item, 'title' | 'url' | 'text'> & {
   userId: User['id']
 };
 
+export function getItemsList() {
+  // TODO: support pagination
+  return prisma.item.findMany({
+    orderBy: { createdAt: "desc" },
+  });
+}
+
 export function createItem({
   title,
   url,
