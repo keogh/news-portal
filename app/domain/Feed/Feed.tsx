@@ -10,7 +10,7 @@ export default function Feed({ items }: Props) {
   return (
     <ol>
       {items.map((item, key) => (
-        <li key={key}>{item.title}</li>
+        <li key={key} className="list-decimal">{item.title}</li>
       ))}
     </ol>
   );

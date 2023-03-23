@@ -24,7 +24,54 @@ async function seed() {
     },
   });
 
-  // TODO: Create seed items
+  await prisma.item.create({
+    data: {
+      title: "Emiten alerta en siete estados de México por robo de material radioactivo",
+      url: "https://riodoce.mx/2023/03/22/emiten-alerta-en-siete-estados-de-mexico-por-robo-de-material-radioactivo/",
+      text: "",
+      user: {
+        connect: {
+          id: user.id,
+        }
+      }
+    },
+  });
+  await prisma.item.create({
+    data: {
+      title: "Esta es una discusión",
+      url: "",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi scelerisque iaculis odio, et vehicula ligula placerat non.",
+      user: {
+        connect: {
+          id: user.id,
+        }
+      }
+    },
+  });
+  await prisma.item.create({
+    data: {
+      title: "Comuneros retiran bloqueo en Presa Santa María",
+      url: "https://www.noroeste.com.mx/elsur/comuneros-retiran-bloqueo-en-presa-santa-maria-JK3590803",
+      text: "",
+      user: {
+        connect: {
+          id: user.id,
+        }
+      }
+    },
+  });
+  await prisma.item.create({
+    data: {
+      title: "‘Descontento por calificaciones’, causa de manifestación en ETI 5: directivos",
+      url: "https://www.noroeste.com.mx/mazatlan/descontento-por-calificaciones-causa-de-manifestacion-en-eti-5-directivos-YL3591515",
+      text: "",
+      user: {
+        connect: {
+          id: user.id,
+        }
+      }
+    },
+  })
 
   console.log(`Database has been seeded. 🌱`);
 }
