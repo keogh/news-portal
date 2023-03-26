@@ -6,6 +6,7 @@ export function itemHeaderDecorator(item: Item) {
     id: item.id,
     title: item.title,
     url: item.url,
+    text: "",
     domain: "",
     pointsLabel: null,
     username: "",
