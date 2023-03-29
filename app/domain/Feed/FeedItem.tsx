@@ -12,7 +12,7 @@ export default function FeedItem({ item }: Props) {
   const decorator = itemHeaderDecorator(item);
 
   return (
-    <div className="flex">
+    <div className="flex gap-2">
       <div>vote</div>
       <ItemHeader { ...decorator } />
     </div>

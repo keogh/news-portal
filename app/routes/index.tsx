@@ -13,7 +13,7 @@ export type ItemWithUserAndDomain = Item & { user: User; domain: Domain | null; 
 
 export const loader = async () => {
   const items: ItemWithUserAndDomain[] = await getItemsList();
-  return json({ items });
+  return json(items);
 };
 
 export default function Index() {
@@ -25,7 +25,7 @@ export default function Index() {
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           {/* TODO: Fix this TS type error */}
           {/* @ts-ignore*/}
-          <Feed items={data.items} />
+          <Feed items={data} />
         </div>
       </div>
     </main>

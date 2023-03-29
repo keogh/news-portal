@@ -29,14 +29,14 @@ export default function ItemHeader({
   return (
     <div className="flex flex-col">
       <div>
-        <div className="flex">
+        <div className="flex gap-x-1 items-baseline">
           <div className="text-lg">
             <Link to={href}>
               {title}
             </Link>
           </div>
           {domain && (
-            <div>({domain})</div>
+            <div className="text-sm">({domain})</div>
           )}
         </div>
       </div>
