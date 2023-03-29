@@ -1,18 +1,22 @@
-import type { Item } from '@prisma/client';
 import { type ItemWithUserAndDomain } from "~/routes/index";
+import { formatDistanceToNow, subDays } from 'date-fns'
 
 export function itemHeaderDecorator(item: ItemWithUserAndDomain ) {
-  // TODO: Return real values
+  const postedAgo = formatDistanceToNow(
+    new Date(item.createdAt),
+    { addSuffix: true }
+  );
+
   return {
     id: item.id,
     title: item.title,
     url: item.url,
-    text: "",
-    domain: item.domain?.name,
-    pointsLabel: null,
-    username: "",
+    text: item.text,
+    domain: item.domain?.name ?? null,
+    pointsLabel: "101 points", // TODO: Add real points
+    username: item.user.email,
     userId: item.userId,
-    postedAgo: "",
-    commentsCount: 0,
+    postedAgo,
+    commentsCount: 0, // TODO: Add real comments
   }
 }

@@ -5,6 +5,7 @@ interface Props {
   id: string;
   title: string;
   url: string | null;
+  text: string | null;
   domain: string | null;
   pointsLabel: string | null;
   username: string;
@@ -24,27 +25,46 @@ export default function ItemHeader({
   postedAgo,
   commentsCount,
 }: Props) {
-  const href = url ?? `/item/${id}`;
+  const itemPageRoute = `/item/${id}`;
+  const href = url ?? itemPageRoute;
 
   return (
     <div className="flex flex-col">
       <div>
         <div className="flex gap-x-1 items-baseline">
           <div className="text-lg">
-            <Link to={href}>
+            <Link className="no-underline visited:text-gray-600" to={href}>
               {title}
             </Link>
           </div>
           {domain && (
-            <div className="text-sm">({domain})</div>
+            <div className="text-sm text-gray-600">
+              ({domain})
+            </div>
           )}
         </div>
       </div>
-      <div className="flex gap-x-1 text-sm">
-        <div>{`${pointsLabel} `}by {username} {postedAgo}</div>
+      <div className="flex gap-x-1 text-xs text-gray-600">
+        <div>
+          <span>{`${pointsLabel} `}by {username}</span>
+          &nbsp;
+          <span>
+            <Link
+              className="no-underline hover:underline"
+              to={itemPageRoute}
+            >
+              {postedAgo}
+            </Link>
+          </span>
+        </div>
         <div>|</div>
         <div>
-          {commentsCount > 0 ? `${commentsCount} comments` : 'discuss' }
+          <Link
+            className="no-underline hover:underline"
+            to={itemPageRoute}
+          >
+            {commentsCount > 0 ? `${commentsCount} comments` : 'discuss' }
+          </Link>
         </div>
       </div>
     </div>

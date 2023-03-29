@@ -3,9 +3,10 @@ import * as React from 'react';
 
 import ItemHeader from './ItemHeader';
 import { itemHeaderDecorator } from '~/decorators/ItemHeaderDecorator';
+import { ItemWithUserAndDomain } from "~/routes";
 
 interface Props {
-  item: Item,
+  item: ItemWithUserAndDomain,
 }
 
 export default function FeedItem({ item }: Props) {
