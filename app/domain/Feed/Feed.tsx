@@ -2,9 +2,10 @@ import type { Item } from '@prisma/client';
 
 import * as React from 'react';
 import FeedItem from './FeedItem';
+import { type ItemWithUserAndDomain } from '~/routes/index';
 
 interface Props {
-  items: Item[],
+  items: ItemWithUserAndDomain[]
 }
 
 export default function Feed({ items }: Props) {
