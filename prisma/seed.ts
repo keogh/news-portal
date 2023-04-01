@@ -25,6 +25,8 @@ async function seed() {
   });
 
   // Seed for domains
+
+  await prisma.domain.deleteMany({});
   const riodoceDomain = await prisma.domain.create({
     data: {
       name: "riodoce.mx",
@@ -36,6 +38,7 @@ async function seed() {
     },
   });
 
+  await prisma.item.deleteMany({})
   await prisma.item.create({
     data: {
       title: "Emiten alerta en siete estados de México por robo de material radioactivo",
