@@ -14,7 +14,10 @@ export default function FeedItem({ item }: Props) {
 
   return (
     <div className="flex align-bottom gap-1">
-      <Vote className="mt-1" />
+      <Vote
+        itemId={item.id}
+        className="mt-1"
+      />
       <ItemHeader { ...decorator } />
     </div>
   );

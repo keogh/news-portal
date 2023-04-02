@@ -17,6 +17,7 @@ model User {
   password Password?
   notes    Note[]
   items    Item[]
+  votes    Vote[]
 }
 
 model Password {
@@ -39,6 +40,8 @@ model Item {
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId  String
 
+  votes   Vote[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -50,6 +53,19 @@ model Domain {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Vote {
+  user    User    @relation(fields: [userId], references: [id])
+  userId  String
+
+  item    Item    @relation(fields: [itemId], references: [id])
+  itemId  String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([userId, itemId])
 }
 
 // TODO: Remove Note model
