@@ -5,15 +5,16 @@ import FeedItem from './FeedItem';
 import { type ItemWithUserAndDomain } from '~/routes/index';
 
 interface Props {
-  items: ItemWithUserAndDomain[]
+  items: ItemWithUserAndDomain[],
+  currentUserId?: string
 }
 
-export default function Feed({ items }: Props) {
+export default function Feed({ items, currentUserId }: Props) {
   return (
     <ol>
       {items.map((item, key) => (
         <li key={key} className="list-decimal mb-1.5">
-          <FeedItem item={item} />
+          <FeedItem item={item} currentUserId={currentUserId} />
         </li>
       ))}
     </ol>

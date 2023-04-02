@@ -8,6 +8,12 @@ export function getItemsList() {
     include: {
       user: true,
       domain: true,
+      votes: true,
+      _count: {
+        select: {
+          votes: true,
+        }
+      }
     }
   });
 }
