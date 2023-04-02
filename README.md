@@ -1,7 +1,7 @@
 
 # News Portal
 
-A news and forum website inspired on Hacker News.
+A news and forum website inspired on Hacker News using Remix framework.
 
 ```shell
 $ yarn install
