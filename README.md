@@ -3,17 +3,38 @@
 
 A news and forum website inspired on Hacker News using Remix framework.
 
-```shell
-$ yarn install
-$ yarn dev
-```
+1. Install dependencies
 
-or NPM
+    ```shell
+    $ yarn install
+    ```
+    
+    or NPM
+    
+    ```shell
+    $ npm install
+    ```
 
-```shell
-$ npm install
-$ npm run dev
-```
+2. Create `.env` file based on the `.env.example`
+
+3. Create database schema
+
+    ```shell
+    $ npx prisma db push
+    ```
+4. Run seed if you want initial data
+    ```shell
+    $ npx prisma db seed
+    ```
+5. Run server
+    ```shell
+    $ yarn dev
+    ```
+    or npm
+    ```shell
+    $ npm run dev
+    ```
+6. Visit `http://localhost:3000`
 
 ## Roadmap
 - [x] List Items
@@ -22,10 +43,10 @@ $ npm run dev
 - [x] Logout
 - [x] Submit Item
 - [x] Vote Item
+- [x] View Item
 - [ ] List Items with pagination
 - [ ] Navbar
 - [ ] Footer
-- [ ] View Item
 - --- Above the this is MVP
 - [ ] Rank items based on the votes and created date
 - [ ] Comment an Item
