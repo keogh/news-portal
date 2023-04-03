@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Form } from "@remix-run/react";
 
 interface Props {
-  className: string,
+  className?: string,
   itemId: string,
   hide?: boolean,
 }
