@@ -25,7 +25,7 @@ export default function ItemHeader({
   postedAgo,
   commentsCount,
 }: Props) {
-  const itemPageRoute = `/item/${id}`;
+  const itemPageRoute = `/items/${id}`;
   const href = url ?? itemPageRoute;
 
   return (

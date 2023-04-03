@@ -36,7 +36,7 @@ export async function action({ request }: ActionArgs) {
 
   const item = await createItem({ title, url, text, userId });
 
-  return redirect(`/item/${item.id}`);
+  return redirect(`/items/${item.id}`);
 }
 
 const ERROR_CSS_CLASSES = 'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-50';

@@ -42,3 +42,19 @@ export function createItem({
     }
   });
 }
+
+export function getItem({ id }: Pick<Item, 'id'>) {
+  return prisma.item.findFirst({
+    where: { id },
+    include: {
+      user: true,
+      domain: true,
+      votes: true,
+      _count: {
+        select: {
+          votes: true,
+        }
+      }
+    }
+  });
+}
