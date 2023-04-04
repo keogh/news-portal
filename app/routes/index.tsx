@@ -29,8 +29,8 @@ export default function Index() {
 
   return (
     <main className="relative min-h-screen bg-white sm:flex">
-      <div className="relative sm:pb-16 sm:pt-8">
-        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div className="relative sm:pb-16 sm:pt-4">
+        <div className="px-4">
           {/* TODO: Fix this TS type error */}
           {/* @ts-ignore*/}
           <Feed items={data.items} currentUserId={data.userId} />

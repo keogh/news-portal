@@ -6,9 +6,10 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration,
+  ScrollRestoration, useLoaderData
 } from "@remix-run/react";
 
+import Layout from "./domain/Layout";
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import { getUser } from "./session.server";
 
@@ -23,6 +24,8 @@ export async function loader({ request }: LoaderArgs) {
 }
 
 export default function App() {
+  const data = useLoaderData<typeof loader>();
+
   return (
     <html lang="en" className="h-full">
       <head>
@@ -32,7 +35,11 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
-        <Outlet />
+        {/* TODO: Fix type, it's because the date is string after json instead of a Date */}
+        {/* @ts-ignore */}
+        <Layout currentUser={data.user}>
+          <Outlet />
+        </Layout>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

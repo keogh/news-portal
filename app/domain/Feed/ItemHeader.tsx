@@ -32,15 +32,14 @@ export default function ItemHeader({
     <div className="flex flex-col">
       <div>
         <div className="flex gap-x-1 items-baseline">
-          <div className="text-lg">
-            <Link className="no-underline visited:text-gray-600" to={href}>
-              {title}
-            </Link>
-          </div>
+          <Link className="no-underline visited:text-gray-600 text-lg" to={href}>
+            {title}
+          </Link>
+          &nbsp;
           {domain && (
-            <div className="text-sm text-gray-600">
+            <span className="text-sm text-gray-600">
               ({domain})
-            </div>
+            </span>
           )}
         </div>
       </div>
