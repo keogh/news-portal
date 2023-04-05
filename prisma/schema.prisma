@@ -52,6 +52,8 @@ model Domain {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([name])
 }
 
 model Vote {

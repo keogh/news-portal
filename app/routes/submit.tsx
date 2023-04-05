@@ -7,6 +7,7 @@ import { requireUserId } from "~/session.server";
 import { createItem } from "~/models/item.server";
 import { badRequest } from "~/utils/request.server";
 import { itemSchema } from "~/domain/Submit/validators";
+import { parseDomainFromURL } from "~/utils/item";
 
 export async function action({ request }: ActionArgs) {
   const userId = await requireUserId(request);
@@ -34,7 +35,8 @@ export async function action({ request }: ActionArgs) {
     });
   }
 
-  const item = await createItem({ title, url, text, userId });
+  const domainName = parseDomainFromURL(url);
+  const item = await createItem({ title, url, text, userId, domainName });
 
   return redirect(`/items/${item.id}`);
 }

@@ -5,6 +5,7 @@ export const itemSchema = Yup.object({
   title: Yup.string().required(),
   url: Yup
     .string()
+    .url()
     .when(
       'text',
       ([ text ], schema)  => {
