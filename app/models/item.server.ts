@@ -20,6 +20,7 @@ export function getItemsList() {
 
 type CreateItemArgs = Pick<Item, 'title' | 'url' | 'text'> & {
   userId: User['id']
+  domainName: string,
 };
 
 export function createItem({
@@ -27,13 +28,23 @@ export function createItem({
   url,
   text,
   userId,
+  domainName,
 }: CreateItemArgs) {
   return prisma.item.create({
     data: {
       title,
       url,
       text,
-      domain: {},
+      domain: {
+        connectOrCreate: {
+          where: {
+            name: domainName,
+          },
+          create: {
+            name: domainName,
+          }
+        }
+      },
       user: {
         connect: {
           id: userId
