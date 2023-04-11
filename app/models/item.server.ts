@@ -1,10 +1,25 @@
 import type { User, Item } from "@prisma/client";
 import { prisma } from "~/db.server";
 
-export function getItemsList() {
+export async function getItemsList() {
   // TODO: support pagination
-  return prisma.item.findMany({
-    orderBy: { createdAt: "desc" },
+  const idsRaw = await prisma.$queryRaw<{id: string}[]>`
+    SELECT i.id
+      FROM public."Item" i
+      JOIN (SELECT p.id, SUM(v.vote) as points
+            FROM public."Item" p
+            JOIN public."Vote" v ON v."itemId" = p.id
+      GROUP BY p.id) y ON y.id = i.id
+    ORDER BY (y.points - 1)/POW(((EXTRACT(epoch FROM NOW()) - EXTRACT(epoch FROM i."createdAt"))/3600)+2, 1.5) DESC
+    LIMIT 30
+  `;
+
+  const ids = idsRaw.map(item => item.id);
+
+  const items = prisma.item.findMany({
+    where: {
+      id: { in: ids },
+    },
     include: {
       user: true,
       domain: true,
@@ -16,6 +31,8 @@ export function getItemsList() {
       }
     }
   });
+
+  return items;
 }
 
 type CreateItemArgs = Pick<Item, 'title' | 'url' | 'text'> & {

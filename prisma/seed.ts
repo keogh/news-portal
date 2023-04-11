@@ -5,9 +5,13 @@ const prisma = new PrismaClient();
 
 async function seed() {
   const email = "admin@remix.run";
+  const email2 = "user@remix.run";
 
   // cleanup the existing database
   await prisma.user.delete({ where: { email } }).catch(() => {
+    // no worries if it doesn't exist yet
+  });
+  await prisma.user.delete({ where: { email: email2 } }).catch(() => {
     // no worries if it doesn't exist yet
   });
 
@@ -19,6 +23,16 @@ async function seed() {
       password: {
         create: {
           hash: hashedPassword,
+        },
+      },
+    },
+  });
+  const user2 = await prisma.user.create({
+    data: {
+      email: 'user@remix.run',
+      password: {
+        create: {
+          hash: await bcrypt.hash("123qweasd", 10),
         },
       },
     },
@@ -38,6 +52,7 @@ async function seed() {
     },
   });
 
+  await prisma.vote.deleteMany({})
   await prisma.item.deleteMany({})
   await prisma.item.create({
     data: {
@@ -54,6 +69,12 @@ async function seed() {
           id: user.id,
         },
       },
+      votes: {
+        create: [
+          { userId: user.id },
+          { userId: user2.id },
+        ],
+      },
     },
   });
   await prisma.item.create({
@@ -66,7 +87,12 @@ async function seed() {
         connect: {
           id: user.id,
         }
-      }
+      },
+      votes: {
+        create: [
+          { userId: user2.id },
+        ],
+      },
     },
   });
   await prisma.item.create({
@@ -83,7 +109,12 @@ async function seed() {
         connect: {
           id: user.id,
         }
-      }
+      },
+      votes: {
+        create: [
+          { userId: user.id },
+        ],
+      },
     },
   });
   await prisma.item.create({
