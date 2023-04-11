@@ -1,5 +1,5 @@
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -62,6 +62,7 @@ model Vote {
 
   item    Item    @relation(fields: [itemId], references: [id])
   itemId  String
+  vote   Int     @default(1)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
