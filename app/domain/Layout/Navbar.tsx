@@ -33,7 +33,7 @@ export default function Navbar({ currentUser }: Props) {
               <button
                 type="submit"
               >
-                logout
+                cerrar sesión
               </button>
             </Form>
           </div>
