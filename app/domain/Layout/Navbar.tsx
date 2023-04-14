@@ -24,7 +24,7 @@ export default function Navbar({ currentUser }: Props) {
       </div>
       <div className={`flex gap-x-4`}>
         {currentUser === null ? (
-          <Link to={LOGIN_ROUTE}>login</Link>
+          <Link to={LOGIN_ROUTE}>iniciar sesión</Link>
         ) : (
           <div className={`flex gap-x-2`}>
             <span className={`block`}>{currentUser.id}</span>
