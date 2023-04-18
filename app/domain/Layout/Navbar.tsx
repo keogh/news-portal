@@ -10,11 +10,6 @@ export default function Navbar({ currentUser }: Props) {
   return (
     <nav className={`flex py-4 justify-between`}>
       <div className={`flex gap-x-4`}>
-        <div>
-          <Link to={ROOT_ROUTE}>
-            News
-          </Link>
-        </div>
         <div className={`flex gap-x-2`}>
           <Link to={ROOT_ROUTE}>nuevos</Link>
           <span className="block">|</span>
@@ -22,9 +17,14 @@ export default function Navbar({ currentUser }: Props) {
         </div>
       </div>
 
+      <div>
+        <Link to={ROOT_ROUTE}>
+          News
+        </Link>
+      </div>
       <div className={`flex gap-x-4`}>
         {currentUser === null ? (
-          <Link to={LOGIN_ROUTE}>login</Link>
+          <Link to={LOGIN_ROUTE}>iniciar sesión</Link>
         ) : (
           <div className={`flex gap-x-2`}>
             <span className={`block`}>{currentUser.id}</span>
@@ -33,7 +33,7 @@ export default function Navbar({ currentUser }: Props) {
               <button
                 type="submit"
               >
-                logout
+                cerrar sesión
               </button>
             </Form>
           </div>

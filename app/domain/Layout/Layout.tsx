@@ -11,7 +11,7 @@ interface Props {
 export default function Layout({ children, currentUser }: Props) {
   return (
     <div className={`mx-auto md:w-5/6 w-full`}>
-      <header>
+      <header className={`px-8 bg-gray-200`}>
         <Navbar currentUser={currentUser} />
       </header>
       <div>
