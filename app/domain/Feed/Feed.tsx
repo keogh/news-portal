@@ -6,7 +6,7 @@ import { type ItemWithUserAndDomain } from '~/routes/index';
 
 interface Props {
   items: ItemWithUserAndDomain[],
-  currentUserId?: string
+  currentUserId?: string,
 }
 
 export default function Feed({ items, currentUserId }: Props) {

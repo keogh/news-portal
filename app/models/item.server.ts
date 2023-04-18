@@ -1,8 +1,14 @@
 import type { User, Item } from "@prisma/client";
 import { prisma } from "~/db.server";
 
-export async function getItemsList() {
-  // TODO: support pagination
+type GetItemsListArgs = {
+  page?: number,
+};
+
+export async function getItemsList({ page = 1 }) {
+  const perPage = 30;
+  const offset = (page - 1) * perPage;
+
   const idsRaw = await prisma.$queryRaw<{id: string}[]>`
     SELECT i.id
       FROM public."Item" i
@@ -11,7 +17,7 @@ export async function getItemsList() {
             JOIN public."Vote" v ON v."itemId" = p.id
       GROUP BY p.id) y ON y.id = i.id
     ORDER BY (y.points - 1)/POW(((EXTRACT(epoch FROM NOW()) - EXTRACT(epoch FROM i."createdAt"))/3600)+2, 1.5) DESC
-    LIMIT 30
+    LIMIT ${perPage} OFFSET ${offset}
   `;
 
   const ids = idsRaw.map(item => item.id);
