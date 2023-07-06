@@ -4,13 +4,6 @@
 A news and forum website inspired on Hacker News using Remix framework.
 
 1. Install dependencies
-
-    ```shell
-    $ yarn install
-    ```
-    
-    or NPM
-    
     ```shell
     $ npm install
     ```
@@ -28,10 +21,6 @@ A news and forum website inspired on Hacker News using Remix framework.
     ```
 5. Run server
     ```shell
-    $ yarn dev
-    ```
-    or npm
-    ```shell
     $ npm run dev
     ```
 6. Visit `http://localhost:3000`
@@ -42,12 +31,12 @@ A news and forum website inspired on Hacker News using Remix framework.
 
 2. Use docker-compose 
    ```shell
-   $ docker-compose -f docker-compose.yml up
+   docker-compose -f docker-compose.yml up
    ```
 
 3. Access database via psql
    ```shell
-   $ psql -h localhost -p 5432 -d news_portal -U postgres
+   psql -h localhost -p 5432 -d news_portal -U postgres
    ```
 
 ### If you had sqlite already install and working on this project
@@ -59,13 +48,13 @@ A news and forum website inspired on Hacker News using Remix framework.
 
 2. Then push the database and run the seed
    ```shell
-   $ npx prisma db push 
-   $ npx prisma db seed
+   npx prisma db push 
+   npx prisma db seed
    ```
 
 3. Generate prisma client
    ```shell
-   $ npx prisma generate
+   npx prisma generate
    ```
 
 ## Roadmap
